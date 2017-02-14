@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+<meta charset="utf-8" />
+<title>Estado del reproductor de viseo You tube</title>
+<script src = "http://www.youtube.com/player_api"></script>
+</head>
+<body>
+<iframe id="reproductor" width="640" height="360"   src="http://www.youtube.com/embed/JW5meKfy3fY" onload="status_video()" frameborder="0" allowfullscreen="">
+</iframe>
+<script>
+var player;
+  function status_video(){
+    player = new YT.Player('reproductor', {
+      videoId: 'JW5meKfy3fY',
+      events:
+       {      
+        'onStateChange': function (event)
+            {
+            if (event.data == YT.PlayerState.PLAYING){
+            alert("Reproduciendo video..");
+            }else if (event.data == YT.PlayerState.PAUSED){
+            alert ("Video en Pausa..");
+            }
+            
+            else if (event.data == YT.PlayerState.ENDED){
+            alert ("Video finalizado...");
+            }
+            
+            else if (event.data == YT.PlayerState.BUFFERING){
+            alert ("Almacenando en el buffer...");
+            }
+             }
+       }
+            
+    });
+  }
+</script>
+</body>
+</html>
