@@ -45,7 +45,7 @@ function obtenerIdUrl(name,url) {
 var player;
 id='aKuivabiOns';
 function onYouTubePlayerAPIReady() {
-    alert("acxa");
+    alert(id);
     player = new YT.Player('player', {
         height: '390',
         width: '640',
