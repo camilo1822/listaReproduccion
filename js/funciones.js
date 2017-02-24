@@ -7,9 +7,7 @@ function onReadyPortal(__jquery) {
 	 if (__jquery("#principal").length) {
         var videos=[];
         var id;
-        var iframe;
-        var $ = document.querySelector.bind(document);
-           lista();
+        WriteFile();
         }
 }
 
@@ -111,5 +109,14 @@ function loadPlayer(container,videoId){
 function agregar() {
     var x = document.getElementById("nuevo").value;
     videos.push(x);
+    localStorage.setItem('videos', JSON.stringify(videos));    
+}
+
+function WriteFile() 
+{
+   var fso  = new ActiveXObject("Scripting.FileSystemObject"); 
+   var fh = fso.CreateTextFile("Test.txt", true); 
+   fh.WriteLine("Some text goes here..."); 
+   fh.Close(); 
 }
 
