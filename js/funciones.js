@@ -7,6 +7,8 @@ function onReadyPortal(__jquery) {
 	 if (__jquery("#principal").length) {
         var videos=[];
         var id;
+        var iframe;
+        var $ = document.querySelector.bind(document);
            lista();
         }
 }
@@ -34,11 +36,11 @@ function obtenerIdUrl(name,url) {
 }
 
 var player;
-id='0AJ0mBp-a-w';
+id='C2z3ubSOr7o';
 function onYouTubePlayerAPIReady() {
     player = new YT.Player('player', {
-        height: '390',
-        width: '640',
+        height: 300,
+        width: 400,
         videoId: id,
         events: {
         'onReady': onPlayerReady,
@@ -52,7 +54,7 @@ function onYouTubePlayerAPIReady() {
 
     // autoplay video
 function onPlayerReady(event) {
-    event.target.playVideo();
+     event.target.playVideo(); 
 }
 
 // when video ends
@@ -68,7 +70,10 @@ function onPlayerStateChange(event) {
 }
 
 function onPlayerStateChange1(event) {
-    if(event.data === 0) {          
+    if(event.data === 0) {
+        if(videos[iden]==undefined){
+            iden = iden-1;
+        }          
         var x = obtenerIdUrl("v",videos[iden]);
         iden++;
         __jquery("#player").css("display","none"); 
@@ -103,5 +108,8 @@ function loadPlayer(container,videoId){
     });
 }
 
-
+function agregar() {
+    var x = document.getElementById("nuevo").value;
+    videos.push(x);
+}
 
